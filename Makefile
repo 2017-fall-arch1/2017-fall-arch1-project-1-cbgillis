@@ -1,23 +1,15 @@
-all: llDemo
+all: lrlistDemo
 
-CFLAGS=-g -O3
+CFLAGS = -g -O3
 
-# Symbols helpful for understanding the productions
-#   $@ is the production's target
-#   $^ are the production's prerequisites
-
-llDemo: llist.o llDemo.o
+lrlistDemo: lrlist.o lrlistDemo.o
 	cc -o $@ $^
 
-llist.o: llist.c llist.h
-	cc -c $(CFLAGS) llist.c
+lrlist.o: lrlist.c lrlist.h
+	cc -c $(CFLAGS) lrlist.c
 
-llDemo.o: llDemo.c llist.h
-	cc -c $(CFLAGS) llDemo.c
+lrlistDemo.o: lrlistDemo.c lrlist.h
+	cc -c $(CFLAGS) lrlistDemo.c
 
 clean:
-	rm -f *.o llDemo
-
-demo: llDemo
-	(echo first; echo "second line"; echo "third and last") | ./llDemo
-
+	rm -f *.o lrlistDemo
